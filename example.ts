@@ -1,4 +1,4 @@
-import { Router } from "./mod.ts";
+import { Router } from "https://deno.land/x/nativerouter/mod.ts";
 import { listenAndServe } from "https://deno.land/std/http/mod.ts";
 
 const router = new Router();
