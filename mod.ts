@@ -61,6 +61,15 @@ export class Router {
   patch(pathname: string, handler: CallbackHandler) {
     this.add(METHODS.PATCH, pathname, handler);
   }
+  
+  use(router: Router) {
+    for (const m in METHODS) {
+      this.routes[METHODS[m]] = [
+        ...this.routes[METHODS[m]],
+        ...router.routes[METHODS[m]],
+      ];
+    }
+  }
 
   async route(req: Request): Promise<Response> {
     for (const r of this.routes[req.method]) {
